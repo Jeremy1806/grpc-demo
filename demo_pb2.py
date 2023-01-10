@@ -13,17 +13,21 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ndemo.proto\"\x18\n\x07Request\x12\r\n\x05index\x18\x01 \x01(\x05\"\x1e\n\x08Response\x12\x12\n\nbranchName\x18\x01 \x01(\t21\n\rBranchService\x12 \n\tgetBranch\x12\x08.Request\x1a\t.Responseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ndemo.proto\"\n\n\x08\x65mptyReq\"\x18\n\x07Request\x12\r\n\x05index\x18\x01 \x01(\x05\"\x1e\n\x08Response\x12\x12\n\nbranchName\x18\x01 \x01(\t\"\'\n\x11\x41llBranchResponse\x12\x12\n\nbranchName\x18\x01 \x01(\t2d\n\rBranchService\x12 \n\tgetBranch\x12\x08.Request\x1a\t.Response\x12\x31\n\x0egetAllBranches\x12\t.emptyReq\x1a\x12.AllBranchResponse0\x01\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'demo_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _REQUEST._serialized_start=14
-  _REQUEST._serialized_end=38
-  _RESPONSE._serialized_start=40
-  _RESPONSE._serialized_end=70
-  _BRANCHSERVICE._serialized_start=72
-  _BRANCHSERVICE._serialized_end=121
+  _EMPTYREQ._serialized_start=14
+  _EMPTYREQ._serialized_end=24
+  _REQUEST._serialized_start=26
+  _REQUEST._serialized_end=50
+  _RESPONSE._serialized_start=52
+  _RESPONSE._serialized_end=82
+  _ALLBRANCHRESPONSE._serialized_start=84
+  _ALLBRANCHRESPONSE._serialized_end=123
+  _BRANCHSERVICE._serialized_start=125
+  _BRANCHSERVICE._serialized_end=225
 # @@protoc_insertion_point(module_scope)

@@ -2,13 +2,23 @@ syntax = "proto3";
 
 service BranchService{
     rpc getBranch(Request) returns (Response);
+
+    rpc getAllBranches(emptyReq) returns (stream AllBranchResponse);
 };
+
+message emptyReq{
+
+}
 
 message Request{
     int32 index = 1;
 }
 
 message Response{
+    string branchName = 1;
+}
+
+message AllBranchResponse{
     string branchName = 1;
 }
 

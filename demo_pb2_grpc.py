@@ -19,12 +19,23 @@ class BranchServiceStub(object):
                 request_serializer=demo__pb2.Request.SerializeToString,
                 response_deserializer=demo__pb2.Response.FromString,
                 )
+        self.getAllBranches = channel.unary_stream(
+                '/BranchService/getAllBranches',
+                request_serializer=demo__pb2.emptyReq.SerializeToString,
+                response_deserializer=demo__pb2.AllBranchResponse.FromString,
+                )
 
 
 class BranchServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def getBranch(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def getAllBranches(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -37,6 +48,11 @@ def add_BranchServiceServicer_to_server(servicer, server):
                     servicer.getBranch,
                     request_deserializer=demo__pb2.Request.FromString,
                     response_serializer=demo__pb2.Response.SerializeToString,
+            ),
+            'getAllBranches': grpc.unary_stream_rpc_method_handler(
+                    servicer.getAllBranches,
+                    request_deserializer=demo__pb2.emptyReq.FromString,
+                    response_serializer=demo__pb2.AllBranchResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -62,5 +78,22 @@ class BranchService(object):
         return grpc.experimental.unary_unary(request, target, '/BranchService/getBranch',
             demo__pb2.Request.SerializeToString,
             demo__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def getAllBranches(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/BranchService/getAllBranches',
+            demo__pb2.emptyReq.SerializeToString,
+            demo__pb2.AllBranchResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
