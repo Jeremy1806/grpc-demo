@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service BranchService{
+    rpc getBranch(Request) returns (Response);
+};
+
+message Request{
+    int32 index = 1;
+}
+
+message Response{
+    string branchName = 1;
+}
+
